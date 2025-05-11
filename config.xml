@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget version="1.0.0" xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <!-- App info and settings here -->
+  <access origin="*" />
+
+  <platform name="android">
+    <!-- Permissions for Android -->
+    <permission android:name="android.permission.CAMERA" />
+    <permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <preference name="android-targetSdkVersion" value="34" />
+</platform>
+
+</widget>

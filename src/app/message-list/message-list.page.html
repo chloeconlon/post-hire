@@ -1,0 +1,96 @@
+<!-- src/app/chat-list/chat-list.page.html -->
+
+<ion-page>
+  <ion-header [translucent]="true">
+    <div class="menu">
+
+      <div class="logo-div">
+        <img src="assets/images/Logo.png" alt="">
+      </div>
+      <h2>Your Chats</h2>
+    
+  </div>
+  </ion-header>
+  
+  <ion-content appSwipe (swipeLeft)="nextPage()" (swipeRight)="previousPage()" class="ion-padding" [fullscreen]="true">
+    <div id="container">
+      <!-- Use *ngIf with async pipe to check if the userChats$ observable has emitted data -->
+      <!-- 'as chats' assigns the emitted array of chats to a template variable named 'chats' -->
+      <!-- Adding optional chaining ?.length to check if the array has items -->
+
+    
+
+      <div class="list-of-messages" *ngIf="userChats$ | async as chats">
+  
+        <!-- Use *ngFor to loop through each 'chat' object in the 'chats' array -->
+        <!-- Bind the click event to the openChat method, passing the chat.id -->
+        <!-- The whole div.message block repeats for each chat -->
+        <div class="message" *ngFor="let chat of chats" (click)="openChat(chat.id)">
+  
+          <div class="image-div">
+            <!-- FUTURE: Dynamically load the other participant's image -->
+            <!-- You'll need to fetch the other participant's photoURL using getOtherParticipantDetails -->
+            <img src="{{ chat.otherParticipantProfilePicture }}" alt=""> <!-- Placeholder image for now -->
+          </div>
+  
+          <div class="message-content">
+            <div class="message-title">
+              <!-- Display the other participant's name -->
+              <!-- Use another async pipe inside the *ngFor to unwrap the Observable from getOtherParticipantDetails -->
+              <!-- Use the Elvis operator (?) and Nullish Coalescing (??) for safety -->
+              <h3 class="recipient-name">
+                 {{ chat.otherParticipantName }}           
+                        
+              </h3>
+              <!-- Display the last message snippet if it exists -->
+              <p class="recent-chat">{{ truncateMessage(chat.lastMessage ?? 'No messages yet') }}</p>
+            </div>
+  
+            <i class="fa-solid fa-angle-right"></i> <!-- Right arrow icon -->
+          </div>
+        </div>
+  
+        <!-- Optional: Show a message if the 'chats' array is empty -->
+        <div *ngIf="chats.length === 0" class="ion-text-center ion-padding">
+            <div class="no-chats">
+              <i class="fa-regular fa-message"></i>
+              <p>You don't have any active chats yet.</p>
+            </div>
+            <!-- Maybe add a link to search for users to start a chat -->
+        </div>
+  
+      </div>
+  
+      <!-- Optional: Show a loading indicator or message while the observable hasn't emitted -->
+      <!-- This *ngIf condition means userChats$ has NOT emitted yet -->
+  <div *ngIf="(userChats$ | async) === null || (userChats$ | async) === undefined" class="ion-text-center ion-padding">
+          <p>Loading your chats...</p>
+          <!-- Could add an ion-spinner here -->
+      </div>
+  
+    </div>
+  </ion-content>
+</ion-page>
+  
+  
+  <!-- Your existing tabs/footer -->
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <!-- Ensure your routerLink matches your app-routing -->
+      <ion-tab-button routerLink="/messages"  [selected]="true" (click)="goToMessages()">
+        <i class="fa-solid fa-message"></i>
+        <ion-label>Messages</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button routerLink="/search" [selected]="false" (click)="goToSearch()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <ion-label>Search</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button routerLink="/account"  [selected]="false" (click)="goToAccount()">
+        <i class="fa-solid fa-user"></i>
+        <ion-label>Account</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+ 

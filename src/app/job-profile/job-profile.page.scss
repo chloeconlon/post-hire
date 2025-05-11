@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+ion-content {
+    --background: #fbfdff;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding-bottom: 80px;
+}
+
+ion-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    --background: #fff;
+    --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+ion-toolbar {
+    background-color: #f4f4f4;
+}
+
+ion-title {
+    font-weight: bold;
+    color: #333;
+}
+
+ion-buttons {
+    margin-left: 16px;
+}
+
+ion-back-button {
+    --color: #007bff;
+    font-size: 1.1rem;
+}
+
+ion-card {
+    border-radius: 12px;
+    background-color: #fbfdff;
+    margin: 16px 0;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+
+    max-height: 75vh;
+}
+
+ion-card-content {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Avatar  */
+ion-avatar {
+    border-radius: 50%;
+    width: 120px;
+    height: 100px;
+    padding-right: 10px;
+    object-fit: cover;
+}
+
+ion-avatar img {
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Labels */
+ion-label h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+}
+
+ion-label p {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 4px;
+}
+
+/* -------------------- Sections -------------------- */
+.body-sect {
+    flex: 1;
+    position: relative;
+    background-color: #fbfdff;
+    padding: 0 16px 16px 16px;
+    overflow-y: scroll;
+    width: 115%;
+    padding-left: 50px;
+}
+
+.Bio {
+    margin-top: 23px;
+    margin-bottom: 30px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 2px 2px 4px #ffb6c1;
+    width: 80%;
+
+}
+
+.availabilityT li {
+    padding-left: -10px;
+}
+
+.category-info {
+    margin-bottom: 32px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px #63c5da;
+    width: 80%;
+}
+
+.category-info p {
+    line-height: 1.8;
+}
+
+
+.hrStyle {
+    height: 1px;
+    width: 100%;
+    border-width: 0;
+    background-color: #63c5da;
+    box-shadow: 0 2px 2px #63c5da;
+    margin: 10px 0;
+}
+
+/* Message button */
+.message-button {
+    position: sticky;
+
+    bottom: -10px;
+    left: 200px;
+    background-color: #007bff;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid lightblue;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.message-button:hover {
+    background-color: #0056b3;
+    border-color: #467aa1;
+}
+
+/* -------------------- Text -------------------- */
+i {
+    padding: 3px;
+}
+
+.profile-card p {
+    color: black;
+    font-family: 'Poppins', serif;
+    font-weight: 280;
+    font-size: medium;
+    padding: 5px;
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 600px) {
+    ion-card {
+        padding: 12px;
+    }
+
+    ion-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    ion-label h2 {
+        font-size: 1.2rem;
+    }
+
+    ion-label p {
+        font-size: 0.9rem;
+    }
+
+    .message-button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}

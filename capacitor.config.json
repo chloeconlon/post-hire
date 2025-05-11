@@ -1,0 +1,10 @@
+{
+  "appId": "com.maggiecahill.myjobs",
+  "appName": "Post & Hire",
+  "webDir": "www",
+  "plugins": {
+    "FirebaseAnalytics": {
+      "enabled": true
+    }
+  }
+}

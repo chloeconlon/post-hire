@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/search"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vendor Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  <ion-card class="profile-card">
+    <!-- Fixed Header Section -->
+    <div class="fixed-header">
+      <ion-item lines="none" class="profile-header">
+        <ion-avatar slot="start">
+          <img [src]="vendor.profilePicture" />
+        </ion-avatar>
+        <ion-label class="profile-label">
+          <h2>{{ vendor.name }}</h2>
+          <p class="contact-info">
+            <span><i class="fa-solid fa-phone"></i> {{ vendor.phoneNo }}</span><br>
+            <span *ngIf="vendor.email"><i class="fa-solid fa-envelope"></i> {{ vendor.email }}</span>
+          </p>
+        </ion-label>
+      </ion-item>
+      <hr class="hrStyle">
+    </div>
+ 
+    <div class="body-sect">
+      <div class="Bio">
+        <ion-label>
+          <p><strong>Biography:</strong></p>
+          <p>{{ vendor.bio }}</p>
+        </ion-label>
+      </div>
+ 
+      <div class="category-info">
+ 
+        <ion-label>
+          <p><strong>Job Field:</strong> {{ vendor.jobField }}</p>
+          <p><strong>Experience:</strong> {{ vendor.experience }} years</p>
+          <p><strong>Rate:</strong> €{{ vendor.rate }}</p>
+          <hr
+            style="height: 1px; background: linear-gradient(to right, #ff0000, #0000ff); border: none; margin: 20px 0;">
+          <p class="availabilityT"><strong>Availability</strong></p>
+          <ul>
+            <li>
+              <p><b>Workdays:</b> {{ vendor.workDays?.join(", ") }}</p>
+            </li>
+            <li>
+              <p><b>Start Time:</b> {{ formatTime(vendor.startTime) }}</p>
+            </li>
+            <li>
+              <p><b>End Time:</b> {{ formatTime(vendor.endTime) }}</p>
+            </li>
+          </ul>
+ 
+ 
+          <p><strong>Service Area:</strong> {{vendor.serviceArea?.join(", ") }}</p>
+        </ion-label>
+      </div>
+      <button class="message-button" (click)="startChat(vendor.id); $event.stopPropagation()"><i
+          class="fa-solid fa-message" style="padding-right: 10px;"></i>Message</button>
+    </div>
+  </ion-card>
+</ion-content>
+ 
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button routerLink="/messages" [selected]="false" (click)="goToMessages()">
+      <i class="fa-solid fa-message"></i>
+      <ion-label>Messages</ion-label>
+    </ion-tab-button>
+ 
+    <ion-tab-button routerLink="/search" [selected]="true" (click)="goToSearch()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+ 
+    <ion-tab-button routerLink="/account" [selected]="false" (click)="goToAccount()">
+      <i class="fa-solid fa-user"></i>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

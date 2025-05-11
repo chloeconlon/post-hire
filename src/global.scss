@@ -1,0 +1,180 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';
+
+
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  ion-app {
+    max-width: 450px; /* Typical mobile max width */
+    margin: auto; /* Centers the app */
+    overflow: hidden;
+  }
+  
+  ion-tab-bar {
+    height: 70px;
+  }
+  
+  ion-tab-button {
+    padding: 10px; /* Adds padding inside each tab button */
+  }
+  
+  ion-label {
+    font-size: 12px; /* Makes the text inside tabs larger */
+    font-weight: bold; /* Optional: Makes it bolder */
+    padding-top: 3px;
+}
+
+  ion-tab-button i{
+    font-size: 20px; /* Increases icon size */
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  ion-page {
+    animation: slideIn 0.5s ease-in-out;
+    margin: 0;
+    padding: 0;
+  }
+
+  ion-content {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    --overflow: hidden !important;
+    --pointer-events: auto; /* Allows clicking */
+    
+  }
+
+  ion-header {
+    height: 70px;
+  }
+
+  ion-page {
+    pointer-events: auto !important;
+  }
+  
+  .tabs-inner {
+    z-index: 1 !important; /* Lower than ion-content */
+  }
+
+  ion-tabs {
+    --position: relative !important;
+    --z-index: 1 !important;
+    
+  }
+  
+  ion-tabs[_nghost-ng-c3372663025] {
+    --position: relative !important;
+    --z-index: 1 !important;
+
+  }
+
+    
+  ion-tabs[_nghost-ng-c3372663025] {
+    --position: relative !important;
+    --z-index: 1 !important;
+
+  }
+
+
+  ion-tabs[_nghost-ng-c3372663025] {
+    height: 70px;
+    display: flex;
+    position: absolute !important;
+    bottom: 0; /* Ensures tabs stay at the bottom */
+    left: 0;
+    right: 0;
+    top: auto;
+}
+
+
+ion-tabs, ion-tab-button {
+  background-color: rgb(40, 90, 148)  !important;
+  color: white;
+}
+
+ion-tabs:hover ,ion-tab-button:hover {
+  color: rgb(162, 246, 255) !important;
+}
+  
+
+  
+  // Example: Adjusting styles for mobile screens only
+  @media screen and (max-width: 768px) {
+    ion-content {
+      padding: 10px;
+    }
+  
+    .custom-button {
+      font-size: 14px;
+    }
+  }
+  
+
+  
+
+.logo-div {
+  width: 15vw;
+  height: auto;
+  max-width: 160px;
+  max-height: 50px;
+  min-width: 150px;
+  min-height: 40px;
+
+}
+
+.logo-div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px double white;
+}
+
+

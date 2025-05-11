@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+ion-page {
+    animation: slideIn 0.5s ease-in-out;
+  }
+
+#container {
+    min-height: 100vh; /* Ensures it takes full height */
+    font-family: "Poppins", serif;
+}
+
+
+
+  .list-of-messages {
+    max-height: 80vh;
+    overflow-y: auto !important; /* Enables scrolling */
+    padding-bottom: 30px;
+    font-family: "Poppins", serif;
+    width: 110%;
+    margin-top: 20px;
+
+    
+  }
+
+
+  
+  ion-content::-webkit-scrollbar-thumb {
+    opacity: 0.1 !important; }
+  
+  
+
+  .message {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(202, 202, 202, 0.633);
+    cursor: pointer;
+  }
+
+  .image-div {
+    max-width: 55px;
+    max-height: 55px;
+    width: 55px;
+    height: 55px;
+    }
+  
+    .image-div img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 2px 2px 2px #00000082;
+      border: 1px double white;
+    }
+
+  .message-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    padding-right: 40px;
+  }
+
+  .message-title {
+
+  }
+
+  .recipient-name {
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .recent-chat {
+    margin-top: 8px;
+    font-size: .8em;
+    color: rgb(178, 175, 175);
+  }
+
+  .message i {
+
+  }
+  
+ .no-chats {
+    border: 5px double white;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgb(199, 145, 220);
+    color: white;
+    font-size: 1.3em;
+    margin-top: 70px;
+    width: 90%;
+ }
+
+ .no-chats i {
+  font-size: 3em;
+ }
+
+ 
+
+
+.menu {
+  background-color: rgb(40, 90, 148);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+  padding: 10px;
+  padding-right: 20px;
+  align-items: center;
+  height: 100%;
+}
+
+.menu h2 {
+  margin: 0;
+  font-family: "Poppins", serif;
+  color: white;
+}
+  
+  
+  
+/* Improve responsiveness on small screens */
+@media (max-width: 400px) {
+  // .dropdown-filters {
+  //   flex-direction: column;
+  // }
+   .image-div {
+    max-width: 45px;
+    max-height: 45px;
+    width: 45px;
+    height: 45px;
+    }
+
+}
+  
+  

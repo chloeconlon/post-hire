@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+ion-page {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.search-and-find {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 95%;
+}
+
+#container {
+  width: 110%;
+}
+
+ion-searchbar {
+  --border-radius: 20px;
+  --position: relative;
+  --z-index: 1000 !important;
+  --pointer-events: auto !important;
+}
+
+.search-container {
+  pointer-events: auto !important;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+
+  pointer-events: auto !important;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: hidden;
+
+}
+
+
+ion-tab-bar {
+  --position: fixed;
+  --top: 0;
+  --width: 100%;
+  --z-index: 1000;
+
+
+}
+
+.entire-page {
+  position: relative;
+  height: 100vh;
+}
+
+.menu {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  margin-top: 25px;
+  padding: 0 20px;
+}
+
+.list-of-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding-top: 10px;
+  padding-bottom: 350px;
+  width: 125%;
+
+}
+
+.profile {
+  width: 90%;
+  padding: 2%;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.449);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  font-family: 'Poppins', serif;
+  font-size: .7em;
+  background: white;
+  cursor: pointer;
+}
+
+
+.profile-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+
+.image-div {
+  max-width: 60px;
+  max-height: 60px;
+  width: 60px;
+  height: 60px;
+}
+
+.image-div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px #00000082;
+  border: 1px double white;
+}
+
+.job-title {
+  font-size: 2em;
+}
+
+.organization-name {
+  font-size: 1em;
+  color: rgba(0, 0, 0, 0.322);
+  margin-top: 5px;
+}
+
+
+.profile-content {
+  padding-left: 20px;
+}
+
+.pay-div,
+.location-div,
+.experience-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 0;
+  ;
+  align-items: center;
+}
+
+.pay,
+.location,
+.experience {
+  margin: 0;
+}
+
+.message-button-div {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  background-color: rgb(177, 204, 255);
+  border: 2px solid white;
+  padding: 10px 0px 0px 10px;
+  border-top-left-radius: 50%;
+  transition: background-color 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.message-button-div:hover {
+  background-color: rgb(126, 160, 223);
+}
+
+.message-button-div:active {
+  background-color: rgb(60, 110, 202);
+}
+
+.message-button-div i {
+  font-size: 2.2em;
+  padding: 15px;
+  margin: 0;
+  color: white;
+}
+
+.message {
+  --box-shadow: 0px 0px 0px !important;
+  background-color: transparent;
+
+}
+
+.message:active {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px !important;
+  opacity: 1 !important;
+}
+
+.dropdown-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.price-filter {
+  border-radius: 20px;
+}
+
+ion-select {
+  --background: #cacdff;
+  --border-radius: 8px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --max-width: 50px !important;
+}
+
+
+ion-select::part(text) {
+  max-width: 70px !important;
+}
+
+
+ion-item {
+  --color: rgb(11, 35, 107);
+  --border-bottom: none !important;
+  --background-hover: transparent !important;
+  --background-activated: transparent !important;
+  --background-activated: transparent !important;
+  --background-activated-opacity: 0 !important;
+  --box-shadow: none !important;
+  --border-width: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
+}
+
+ion-item:active {
+  --box-shadow: 0px 0px 0px red;
+  --opacity: 0;
+}
+
+
+
+ion-select-option {
+  color: black;
+  font-size: 16px;
+  padding: 10px;
+}
+
+ion-alert {
+  --background: #641818 !important;
+  --color: #333;
+}
+
+.alert-wrapper.sc-ion-alert-md {
+  --max-width: 400px !important;
+}
+
+ion-alert::part(wrapper) {
+  --max-width: 50px !important;
+}
+
+ion-alert ion-backdrop .alert-wrapper.sc-ion-alert-md {
+  --max-width: 400px !important;
+}
+
+
+
+.alert-wrapper {
+  max-width: 400px !important;
+}
+
+
+
+
+.sc-ion-alert-md-h {
+  max-width: 400px !important;
+  max-height: 560px !important;
+}
+
+ion-alert {
+  --max-width: 200px !important;
+  --max-height: 560px !important;
+}
+
+:root {
+  --max-width: 200px !important;
+}
+
+.searchbar-search-icon.sc-ion-searchbar-md {
+  cursor: pointer;
+
+}
+
+
+
+/* Clear filters button */
+.clear-filters {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+/* No results message */
+.no-results {
+  text-align: center;
+  padding: 40px 16px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  margin: 16px 0;
+
+  p {
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: var(--ion-color-medium);
+  }
+}
+
+
+
+ion-content {
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
+}
+
+
+/* Improve responsiveness on small screens */
+@media (max-width: 576px) {
+
+
+  .price-filter ion-item {
+    font-size: .9em;
+  }
+
+  .industry-filter ion-item {
+    font-size: .9em;
+  }
+
+  .location-filter ion-item {
+    font-size: .9em;
+  }
+}
+
+@media (max-width: 400px) {
+
+
+  ion-select[_ngcontent-ng-c916369821] {
+    --padding-start: 8px;
+    --padding-end: 5px;
+  }
+
+  .price-filter ion-item {
+    font-size: .7em;
+  }
+
+  .industry-filter ion-item {
+    font-size: .7em;
+  }
+
+  .location-filter ion-item {
+    font-size: .7em;
+  }
+
+}
+
+
+
+
+
+.menu {
+  background-color: rgb(40, 90, 148);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+  padding: 10px;
+  padding-right: 20px;
+  align-items: center;
+}
+
+.menu h2 {
+  margin: 0;
+  font-family: "Poppins", serif;
+  color: white;
+}
+
+
+
+
+.item-native {
+  all: unset !important;
+}
+
+
+ion-item::part(native) {
+  all: unset !important;
+}
+
+
+.filters {
+  width: 85%;
+}

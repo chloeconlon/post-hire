@@ -1,0 +1,41 @@
+<ion-page>
+  <ion-content #content [fullscreen]="true" [scrollEvents]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">chat</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="container">
+      <div class="header">
+        <i (click)="goToMessages()" class="fa-solid fa-angle-left"></i>
+        <div class="image-div">
+          <img src="{{ recipientProfilePicture }}" alt="">
+        </div>
+        <h1 class="message-title">{{ recipientName }}</h1>
+      </div>
+
+      <div class="chat-content" #chatContent>
+        <div *ngFor="let message of messages$ | async" [ngClass]="message.senderId === currentUserId ? 'sent' : 'received'"  [id]="'message-' + message.id">
+          <p>{{ message.text }}</p>
+
+          <ng-container *ngIf="message.type === 'image'">
+            <img [src]="'data:image/jpeg;base64,' + message.imageData" alt="Image message" class="message-image">
+          </ng-container>
+
+         
+        </div>
+
+        
+      </div>
+
+      <div class="send-message">
+        <div class="input">
+          <div class="icon" (click)="takePhoto()" class="camera-button"><i class="fa-solid fa-camera" ></i></div>
+          <input [(ngModel)]="newMessage" class="send-chat" placeholder="Type a message..." (keyup.enter)="sendMessage()">
+          <ion-button (click)="sendMessage()" class="send-button"><i class="fa-solid fa-paper-plane"></i></ion-button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-page>

@@ -1,0 +1,157 @@
+<ion-page>
+<ion-header [translucent]="true">
+  <div class="menu">
+
+    <div class="logo-div">
+      <img src="assets/images/Logo.png" alt="">
+    </div>
+    <h2>Your Profile</h2>
+  
+</div>
+</ion-header>
+
+<ion-content appSwipe (swipeLeft)="nextPage()" (swipeRight)="previousPage()" class="ion-padding" [fullscreen]="true">
+  <div id="container" *ngIf="combinedAccountData$ | async as data">
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="image-div">
+          <img src="{{data.userData?.profilePicture}}" alt="">
+        </div>
+        <div class="profile-header-details">
+          <h1 class = "profile-name">{{data.userData?.name}}</h1>
+          <p>{{data.vendorData?.jobPosition}}</p>
+        </div>
+      </div>
+
+      <span class = "divider"></span>
+
+      <div class="account-settings">
+        <ion-button class = "edit">Edit <i class="fa-solid fa-pencil"></i></ion-button>
+        <h3>Account Details</h3>
+          <div class="account-settings-item">
+            <p class = "title">Name</p>
+            <p class = "content">{{data.userData?.name|| 'Unavailable'}}</p>
+          </div>
+
+          <div class="account-settings-item">
+            <p class = "title">Email</p>
+            <p class = "content"> {{ data.userData?.email || 'Not provided' }}</p>
+          </div>
+
+          <div class="account-settings-item">
+            <p class = "title">Account Type</p>
+            <p class = "content">{{capitalizeFirstLetter(data.userData?.accountType|| 'Not assigned')}}</p>
+          </div>
+
+          <div class="account-settings-item" *ngIf="data.vendorData">
+            <p class = "title">Phone Number</p>
+            <p class = "content"> {{data.vendorData.phoneNo}}</p>
+          </div>
+
+          <div class="account-settings-item">
+            <p class = "title">Password</p>
+            <p class = "content">******</p>
+          </div>
+
+          <div class="account-settings-item" style = "margin-bottom: 25px;">
+            <p class = "title">Switch Theme</p>
+            <ion-toggle (ionChange)="toggleTheme()"></ion-toggle>
+          </div>
+
+          <div class="account-settings-item">
+            <button class = "logout" button="true" (click)="logout()">Logout </button>
+          </div>
+   
+      </div>
+
+      <span class = "divider"></span>
+
+
+      <div class="profile-settings" *ngIf="data.vendorData">
+        <ion-button class = "edit">Edit <i class="fa-solid fa-pencil"></i></ion-button>
+
+        <h3>Profile Details</h3>
+        <div class="profile-settings-item">
+          <p class = "title">Organization Name</p>
+          <p class = "content">{{data.vendorData.businessName}}</p>
+        </div>
+
+        <div class="profile-settings-item">
+          <p class = "title">Business Industry</p>
+          <p class = "content">{{data.vendorData.jobField}}</p>
+        </div>
+
+        <div class="profile-settings-item">
+          <p class = "title">Job Title</p>
+          <p class = "content">{{data.vendorData.jobPosition}}</p>
+        </div>
+
+        <span class = "divider smaller"></span>
+
+
+        <div class="profile-settings-item">
+          <p class = "title">Service Area</p>
+          <p class = "content">{{data.vendorData.serviceArea?.join(", ") }}</p>
+        </div>
+
+        <div class="profile-settings-item">
+          <p class = "title">Hourly Rate</p>
+          <p class = "content">€{{data.vendorData.rate}}.00</p>
+        </div>
+
+        <div class="group">
+          <div class="profile-settings-item">
+            <p class = "title">Start Time</p>
+            <p class = "content"> {{ formatTime(data.vendorData.startTime) }}</p>
+          </div>
+
+          <div class="profile-settings-item">
+            <p class = "title">End Time</p>
+            <p class = "content">{{formatTime(data.vendorData.endTime)}}</p>
+          </div>
+
+        </div>
+        
+
+
+
+        <div class="profile-settings-item">
+          <p class = "title">Years of Experience</p>
+          <p class = "content">{{data.vendorData.experience}} Years</p>
+        </div>
+
+        <span class = "divider smaller"></span>
+
+
+        <div class="profile-settings-item">
+          <p class = "title">Biography</p>
+          <p class = "content">{{data.vendorData.bio}}</p>
+        </div>
+
+        <span class = "divider smaller"></span>
+
+       
+      </div>
+    </div>
+  </div>
+</ion-content>
+</ion-page>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button routerLink="/messages"  [selected]="false" (click)="goToMessages()">
+      <i class="fa-solid fa-message"></i>
+      <ion-label>Messages</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button routerLink="/search"  [selected]="false" (click)="goToSearch()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button routerLink="/account" [selected]="true" (click)="goToAccount()">
+      <i class="fa-solid fa-user"></i>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+

@@ -1,0 +1,279 @@
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Login Form -->
+  <ion-card *ngIf="currentForm === 'login'">
+    <ion-card-header>
+      <div class="center">
+      <div class="image-div">
+        <img src="assets/images/Logo.png" alt="">
+      </div>
+    </div>
+      <ion-card-title class="ion-text-center">Login</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+       
+        <ion-button  id = "main-button" expand="block" type="submit" [disabled]="loginForm.invalid" class="ion-margin-top">
+          Login
+        </ion-button>
+  
+      </form>
+
+      <ng-container *ngIf="currentForm === 'login'">
+        <p class = "labels">Don't have an account?</p>
+        <div class="register-buttons">
+        <ion-button id = "customerAccount" fill="clear" (click)="showCustomerSignupForm()">
+          Sign up as a Customer
+        </ion-button>
+        <ion-button id = "vendorAccount" fill="clear" (click)="showVendorSignupForm()">
+          Sign up as a Vendor
+        </ion-button>
+      </div>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Customer Signup Form -->
+  <ion-card *ngIf="currentForm === 'Customer Signup'">
+    <ion-card-header>
+      <div class="center">
+      <div class="image-div">
+        <img src="assets/images/Logo.png" alt="">
+      </div>
+    </div>
+      <ion-card-title class="ion-text-center">Customer Signup</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="customerSignupForm" (ngSubmit)="customerSignup()">
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input type="tel" formControlName="phoneNo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        
+        <!-- Profile Picture Upload -->
+        <ion-item lines="none" class="ion-margin-top">
+          <ion-label position="floating" class = "profile">Choose a Profile Photo</ion-label>
+
+          <label for="profile-upload" class="custom-file-upload">
+            Upload Photo
+          </label>
+
+          <input type="file"  id="profile-upload"   (change)="onCustomerFileSelected($event)" accept="image/*">
+          <img *ngIf="customerImagePreview" [src]="customerImagePreview" class="preview-img" alt="Profile Preview">
+        </ion-item>
+  
+        
+        <ion-button id = "main-button" expand="block" type="submit" class="ion-margin-top">
+          Sign Up
+        </ion-button>
+      </form>
+
+      <ng-container *ngIf="currentForm === 'Customer Signup'">
+        <p class = "labels">Already have an account?</p>
+        <div class="register-buttons">
+        <ion-button id = "login-button" fill="clear" (click)="showLoginForm()">
+          Login
+        </ion-button>
+      </div>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Vendor Signup Form -->
+  <ion-card *ngIf="currentForm === 'Vendor Signup'">
+    <ion-card-header>
+      <div class="center">
+      <div class="image-div">
+        <img src="assets/images/Logo.png" alt="">
+      </div>
+    </div>
+      <ion-card-title class="ion-text-center">Vendor Signup</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="vendorSignupForm" (ngSubmit)="vendorSignup()">
+        <!-- Basic Information -->
+
+        <div class="header-labels">
+          <ion-label class = "header-label">  Personal Details  </ion-label>
+          </div>
+
+         <ion-item>
+          <ion-label position="floating">Full Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input type="tel" formControlName="phoneNo"></ion-input>
+        </ion-item>
+
+        <!-- Profile Picture Upload -->
+        <ion-item lines="none" class="ion-margin-top">
+          <ion-label position="floating" class = "profile">Choose a Profile Photo</ion-label>
+
+          <label for="profile-upload" class="custom-file-upload">
+            Upload Photo
+          </label>
+
+          <input type="file"  id="profile-upload"   (change)="onVendorFileSelected($event)" accept="image/*">
+          <img *ngIf="vendorImagePreview" [src]="vendorImagePreview" class="preview-img" alt="Profile Preview">
+        </ion-item>
+        
+        
+        <div class="header-labels">
+          <ion-label class = "header-label">  Account Details  </ion-label>
+          </div>
+
+        <ion-item>
+          <ion-label position="floating">Business Name</ion-label>
+          <ion-input type="text" formControlName="businessName"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label position="floating">Job Position</ion-label>
+          <ion-input type="text" formControlName="jobPosition"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Bio</ion-label>
+          <ion-input type="text" formControlName="bio"></ion-input>
+        </ion-item>
+
+
+        <div class="header-labels">
+          <ion-label class = "header-label"> Business Details  </ion-label>
+          </div>
+
+
+          
+        <ion-item>
+
+          <ion-label position="floating">Industry</ion-label>
+            <ion-select formControlName="jobField" placeholder="Select Industry">
+              <ion-select-option value="Technology">Technology</ion-select-option>
+              <ion-select-option value="Healthcare">Healthcare</ion-select-option>
+              <ion-select-option value="Finance">Finance</ion-select-option>
+              <ion-select-option value="Education">Education</ion-select-option>
+              <ion-select-option value="Engineering">Engineering</ion-select-option>
+              <ion-select-option value="Hospitality">Hospitality</ion-select-option>
+              <ion-select-option value="Construction">Construction</ion-select-option>
+              <ion-select-option value="Transportation">Transportation</ion-select-option>
+              <ion-select-option value="Retail">Retail</ion-select-option>
+              <ion-select-option value="Arts & Entertainment">Arts & Entertainment</ion-select-option>
+              <ion-select-option value="Law & Legal Services">Law & Legal Services</ion-select-option>
+              <ion-select-option value="Urban & Regional Planning">Urban & Regional Planning</ion-select-option>
+              <ion-select-option value="Real Estate & Property Management">Real Estate & Property Management</ion-select-option>
+              <ion-select-option value="Interior Design & Architecture">Interior Design & Architecture</ion-select-option>
+              <ion-select-option value="Marketing & Advertising">Marketing & Advertising</ion-select-option>
+              <ion-select-option value="Environmental Science & Sustainability">Environmental Science & Sustainability</ion-select-option>
+              <ion-select-option value="Data Science & Analytics">Data Science & Analytics</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Rate (€/hour)</ion-label>
+          <ion-input type="number" formControlName="rate"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Experience (years)</ion-label>
+          <ion-input type="number" formControlName="experience"></ion-input>
+        </ion-item>
+
+     
+       
+        
+        <!-- Service Information -->
+        <ion-item>
+          <ion-label>Service Areas</ion-label>
+          <ion-select multiple="true" formControlName="serviceArea" placeholder = "Select Service Area">
+            <ion-select-option *ngFor="let county of irishCounties" [value]="county">
+              {{ county }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="header-labels">
+        <ion-label class = "header-label"> Availability </ion-label>
+        </div>
+        
+        <ion-item>
+          <ion-label>Work Days</ion-label>
+          <ion-select multiple="true" formControlName="workDays" placeholder = "Select Work Schedule">
+            <ion-select-option *ngFor="let day of workDays" [value]="day">
+              {{ day }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <div class="time-div">
+        <ion-item class = "times">
+          <ion-label position="floating">Start Time</ion-label>
+          <ion-input type="time" formControlName="startTime" placeholder="Select Start Time"></ion-input>
+        </ion-item>
+        
+        <ion-item class = "times">
+          <ion-label position="floating">End Time</ion-label>
+          <ion-input type="time" formControlName="endTime" placeholder = "Select End Time"></ion-input>
+        </ion-item>
+
+      </div>
+        
+  
+
+   
+        
+  
+        
+        <ion-button id = "main-button" expand="block" type="submit" class="ion-margin-top">
+          Sign Up
+        </ion-button>
+      </form>
+
+      <ng-container *ngIf=" currentForm === 'Vendor Signup'">
+        <p class = "labels">Already have an account?</p>
+        <div class="register-buttons">
+        <ion-button id = "login-button" fill="clear" (click)="showLoginForm()">
+          Login
+        </ion-button>
+      </div>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Bottom Navigation -->
+  <div class="ion-text-center ion-padding-top">
+    
+    
+    
+  </div>
+</ion-content>

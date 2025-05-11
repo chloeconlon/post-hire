@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.container {
+    height: 100vh;
+    width: 100%;
+}
+.header {
+    border-bottom:3px solid rgba(0, 0, 0, 0.175);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: "Poppins", serif;
+    width: 100%;
+    background: #0e2c6dc2;
+    padding-left: 10px;
+    color: white;
+}
+
+.image-div {
+  max-width: 50px;
+  max-height: 50px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .image-div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px #00000082;
+    border: 1px double white;
+  }
+
+
+.header h1 {
+  font-size: 1.3em;
+}
+
+.header i {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+
+.chat-content {
+
+    padding-top: 20px;
+    gap: 10px; /* Adds spacing between messages */
+
+    display: flex;
+    flex-direction: column; /* Keep messages in normal order */
+    overflow-y: auto;
+    height: calc(100vh - 180px); /* Adjust to fit screen */
+    padding-bottom: 10px;
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+    scroll-behavior: unset; /* Disables animated scrolling */
+    width: 110%;
+    padding-right: 45px;
+}
+
+
+.send-message {
+   
+    position: fixed; /* Keeps it at the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    background: white; /* Optional, to avoid overlap */
+    padding: 10px;
+    
+    border-top: 1px solid #ddd; /* Optional border */
+
+
+}
+
+.input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+.send-message input {
+    position: relative;
+    bottom: 0;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.29);
+    width: 70%;
+    border-radius: 30px;
+    height: 50px;
+    padding-left: 10px;
+    outline: none;
+    border: none;
+}
+
+.icon {
+    font-size: 1.5em;
+}
+
+.sent, .received {
+    border-radius: 30px;
+    padding: 10px;
+    max-width: 50%;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.sent {
+    justify-content: flex-end;
+    text-align: right;
+    background-color: #46db7f; /* Light green for sent messages */
+    align-self: flex-end;
+    color: white;
+    border-bottom-right-radius: 0px;
+    margin-right: 10px;
+  }
+  
+  .received {
+    justify-content: flex-start;
+    text-align: left;
+    background-color: #6495ed; /* Light gray for received messages */
+    align-self: flex-start;
+    border-bottom-left-radius: 0px;
+    color: white;
+    margin-left: 10px;
+  }
+ 
+  p {
+    margin: 0;
+  }
+
+  ion-button {
+    --border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    height: 50px;
+  }
+
+  
+  ion-button::part(native) {
+    color: white;
+  }
+
+  ion-button {
+    margin-top: 0 !important;
+  }
+
+  ion-content {
+    --padding-start: 00px; 
+    --padding-end: 0px;
+
+  }
+
+
+
+
+  
+/* Style for highlighted messages (from notifications) */
+.highlighted-message {
+  animation: highlight-pulse 3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes highlight-pulse {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(var(--ion-color-primary-rgb), 0.7);
+    background-color: rgba(var(--ion-color-primary-rgb), 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(var(--ion-color-primary-rgb), 0);
+    background-color: rgba(var(--ion-color-primary-rgb), 0.2);
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(var(--ion-color-primary-rgb), 0);
+    background-color: transparent;
+  }
+}
+
+/* Make sure each message has its own ID */
+ion-item.message {
+  transition: background-color 0.3s ease;
+}

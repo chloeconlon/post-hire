@@ -1,0 +1,139 @@
+<ion-page>
+  <ion-header [translucent]="true">
+      <div class="menu">
+
+          <div class="logo-div">
+            <img src="assets/images/Logo.png" alt="">
+          </div>
+          <h2>Search & Find</h2>
+        
+      </div>
+  </ion-header>
+
+  <ion-content appSwipe (swipeLeft)="nextPage()" (swipeRight)="previousPage()" class="ion-padding" [fullscreen]="true">
+    <div id="container">
+      <div class="search-container">
+        <div class="filters">
+          <div class="search-and-find">
+            <ion-searchbar class="search-input" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)" placeholder="Search jobs..."></ion-searchbar>
+          </div>
+
+          <div class="dropdown-filters">
+            <div class="price-filter">
+              <ion-item>
+                <ion-select placeholder="Price" interface="alert" [(ngModel)]="priceFilter" (ionChange)="onPriceFilterChange($event)" [interfaceOptions]="{header: 'Select a Price Per Hour'}">
+                  <ion-select-option value="15">&lt; $15.00 /hr</ion-select-option>
+                  <ion-select-option value="30">&lt; $30.00 /hr</ion-select-option>
+                  <ion-select-option value="75">&lt; $75.00 /hr</ion-select-option>
+                  <ion-select-option value="100">&lt; $100.00 /hr</ion-select-option>
+                  <ion-select-option value="101">&gt; $100.00 /hr</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </div>
+
+            <div class="industry-filter">
+              <ion-item>
+                <ion-select placeholder="Business Area" interface="alert" [(ngModel)]="businessAreaFilter" (ionChange)="onBusinessAreaChange($event)" [interfaceOptions]="{header: 'Select a Business Area'}">
+                  <ion-select-option value="Technology">Technology</ion-select-option>
+                  <ion-select-option value="Healthcare">Healthcare</ion-select-option>
+                  <ion-select-option value="Finance">Finance</ion-select-option>
+                  <ion-select-option value="Education">Education</ion-select-option>
+                  <ion-select-option value="Engineering">Engineering</ion-select-option>
+                  <ion-select-option value="Hospitality">Hospitality</ion-select-option>
+                  <ion-select-option value="Construction">Construction</ion-select-option>
+                  <ion-select-option value="Transportation">Transportation</ion-select-option>
+                  <ion-select-option value="Retail">Retail</ion-select-option>
+                  <ion-select-option value="Arts & Entertainment">Arts & Entertainment</ion-select-option>
+                  <ion-select-option value="Law & Legal Services">Law & Legal Services</ion-select-option>
+                  <ion-select-option value="Urban & Regional Planning">Urban & Regional Planning</ion-select-option>
+                  <ion-select-option value="Real Estate & Property Management">Real Estate & Property Management</ion-select-option>
+                  <ion-select-option value="Interior Design & Architecture">Interior Design & Architecture</ion-select-option>
+                  <ion-select-option value="Marketing & Advertising">Marketing & Advertising</ion-select-option>
+                  <ion-select-option value="Environmental Science & Sustainability">Environmental Science & Sustainability</ion-select-option>
+                  <ion-select-option value="Data Science & Analytics">Data Science & Analytics</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </div>
+
+            <div class="location-filter">
+              <ion-item>
+                <ion-select placeholder="Location" interface="alert" [(ngModel)]="locationFilter" (ionChange)="onLocationChange($event)" [interfaceOptions]="{header: 'Select a Service Area'}">
+                  <ion-select-option *ngFor="let county of irishCounties" [value]="county">{{county}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </div>
+          </div>
+
+          <!-- Clear filters button -->
+          <div *ngIf="searchQuery || priceFilter !== '0' || businessAreaFilter || locationFilter" class="clear-filters">
+            <ion-button fill="clear" size="small" (click)="clearFilters()">
+              Clear All Filters
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="list-of-profiles">
+          <!-- No results message -->
+          <div *ngIf="(filteredVendors$ | async)?.length === 0" class="no-results">
+            <p>No results matching your search criteria.</p>
+            <ion-button fill="outline" (click)="clearFilters()">Clear All Filters</ion-button>
+          </div>
+
+          <div *ngFor="let vendor of filteredVendors$ | async" class="profile" (click)="goToVendorProfile(vendor.id)">
+            <div class="profile-header">
+              <div class="image-div">
+                <img src="{{vendor.profilePicture}}" alt="">
+              </div>
+              <div class="title-content">
+                <h1 class="job-title">{{vendor.jobPosition}}</h1>
+                <h3 class="organization-name">{{vendor.businessName}}</h3>
+              </div>
+            </div>
+
+            <div class="profile-middle">
+              <div class="profile-content">
+                <div class="pay-div">
+                  <i class="fa-solid fa-euro-sign"></i>
+                  <p class="pay">{{vendor.rate}}.00 /hour</p>
+                </div>
+
+                <div class="location-div">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p class="location">{{ vendor.serviceArea?.join(", ") }}</p>
+                </div>
+
+                <div class="experience-div">
+                  <i class="fa-solid fa-clock"></i>
+                  <p class="experience">{{vendor.experience}} Years of Experience</p>
+                </div>
+              </div>
+
+              <div class="message-button-div">
+                <button class="message" (click)="startChat(vendor.id); $event.stopPropagation()"><i class="fa-regular fa-message"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-page>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button routerLink="/messages" [selected]="false" (click)="goToMessages()">
+      <i class="fa-solid fa-message"></i>
+      <ion-label>Messages</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button routerLink="/search" [selected]="true" (click)="goToSearch()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button routerLink="/account" [selected]="false" (click)="goToAccount()">
+      <i class="fa-solid fa-user"></i>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

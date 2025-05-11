@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>WOW</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+</ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="messages">
+      <i class="fa-solid fa-message"></i>
+      <ion-label>Messages</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="account">
+      <i class="fa-solid fa-user"></i>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
