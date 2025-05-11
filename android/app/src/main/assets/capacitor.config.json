@@ -1,0 +1,28 @@
+{
+	"appId": "com.maggiecahill.myJobs",
+	"appName": "Post & Hire",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https",
+		"cleartext": true
+	},
+	"plugins": {
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		},
+		"FirebaseMessaging": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	},
+	"android": {
+		"allowMixedContent": true
+	}
+}
